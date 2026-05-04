@@ -130,10 +130,10 @@ export function AppSidebar() {
   const groups = NAV_BY_ROLE[role];
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0">
-      <SidebarHeader className="px-4 pt-5 pb-3">
+    <Sidebar collapsible="icon" className="border-r border-border bg-sidebar">
+      <SidebarHeader className="px-4 pt-5 pb-3 border-b border-border">
         <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-primary shadow-glow flex items-center justify-center text-primary-foreground font-display font-bold text-lg">
+          <div className="h-9 w-9 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-base shadow-soft">
             S
           </div>
           {!collapsed && (
