@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { StatCard, ChartPlaceholder, GlassCard } from "@/components/data-primitives";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/analytics")({
   head: () => ({ meta: [{ title: "Analytics — Skoolio" }] }),
-  component: AnalyticsPage,
+  component: () => (
+    <ProtectedRoute allow={["admin"]}>
+      <AnalyticsPage />
+    </ProtectedRoute>
+  ),
 });
 
 function AnalyticsPage() {

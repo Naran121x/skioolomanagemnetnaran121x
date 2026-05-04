@@ -3,10 +3,15 @@ import { PageShell } from "@/components/page-shell";
 import { DataTable, StatCard } from "@/components/data-primitives";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/students")({
   head: () => ({ meta: [{ title: "Students — Skoolio" }] }),
-  component: StudentsPage,
+  component: () => (
+    <ProtectedRoute allow={["admin", "teacher"]}>
+      <StudentsPage />
+    </ProtectedRoute>
+  ),
 });
 
 const STUDENTS = [
