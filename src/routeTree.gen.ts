@@ -11,10 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WellnessRouteImport } from './routes/wellness'
 import { Route as TransportRouteImport } from './routes/transport'
+import { Route as StudentsRouteImport } from './routes/students'
+import { Route as StaffRouteImport } from './routes/staff'
+import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as HomeworkRouteImport } from './routes/homework'
+import { Route as GradebookRouteImport } from './routes/gradebook'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as AttendanceRouteImport } from './routes/attendance'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WellnessRoute = WellnessRouteImport.update({
@@ -27,14 +37,54 @@ const TransportRoute = TransportRouteImport.update({
   path: '/transport',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentsRoute = StudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MessagesRoute = MessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LessonsRoute = LessonsRouteImport.update({
+  id: '/lessons',
+  path: '/lessons',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsightsRoute = InsightsRouteImport.update({
   id: '/insights',
   path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeworkRoute = HomeworkRouteImport.update({
+  id: '/homework',
+  path: '/homework',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GradebookRoute = GradebookRouteImport.update({
+  id: '/gradebook',
+  path: '/gradebook',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -47,6 +97,16 @@ const AttendanceRoute = AttendanceRouteImport.update({
   path: '/attendance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AchievementsRoute = AchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,29 +115,59 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
+  '/analytics': typeof AnalyticsRoute
   '/attendance': typeof AttendanceRoute
   '/finance': typeof FinanceRoute
+  '/gradebook': typeof GradebookRoute
+  '/homework': typeof HomeworkRoute
   '/insights': typeof InsightsRoute
+  '/lessons': typeof LessonsRoute
   '/messages': typeof MessagesRoute
+  '/schedule': typeof ScheduleRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/staff': typeof StaffRoute
+  '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
   '/wellness': typeof WellnessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
+  '/analytics': typeof AnalyticsRoute
   '/attendance': typeof AttendanceRoute
   '/finance': typeof FinanceRoute
+  '/gradebook': typeof GradebookRoute
+  '/homework': typeof HomeworkRoute
   '/insights': typeof InsightsRoute
+  '/lessons': typeof LessonsRoute
   '/messages': typeof MessagesRoute
+  '/schedule': typeof ScheduleRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/staff': typeof StaffRoute
+  '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
   '/wellness': typeof WellnessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/achievements': typeof AchievementsRoute
+  '/analytics': typeof AnalyticsRoute
   '/attendance': typeof AttendanceRoute
   '/finance': typeof FinanceRoute
+  '/gradebook': typeof GradebookRoute
+  '/homework': typeof HomeworkRoute
   '/insights': typeof InsightsRoute
+  '/lessons': typeof LessonsRoute
   '/messages': typeof MessagesRoute
+  '/schedule': typeof ScheduleRoute
+  '/settings': typeof SettingsRoute
+  '/skills': typeof SkillsRoute
+  '/staff': typeof StaffRoute
+  '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
   '/wellness': typeof WellnessRoute
 }
@@ -85,38 +175,78 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/achievements'
+    | '/analytics'
     | '/attendance'
     | '/finance'
+    | '/gradebook'
+    | '/homework'
     | '/insights'
+    | '/lessons'
     | '/messages'
+    | '/schedule'
+    | '/settings'
+    | '/skills'
+    | '/staff'
+    | '/students'
     | '/transport'
     | '/wellness'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/achievements'
+    | '/analytics'
     | '/attendance'
     | '/finance'
+    | '/gradebook'
+    | '/homework'
     | '/insights'
+    | '/lessons'
     | '/messages'
+    | '/schedule'
+    | '/settings'
+    | '/skills'
+    | '/staff'
+    | '/students'
     | '/transport'
     | '/wellness'
   id:
     | '__root__'
     | '/'
+    | '/achievements'
+    | '/analytics'
     | '/attendance'
     | '/finance'
+    | '/gradebook'
+    | '/homework'
     | '/insights'
+    | '/lessons'
     | '/messages'
+    | '/schedule'
+    | '/settings'
+    | '/skills'
+    | '/staff'
+    | '/students'
     | '/transport'
     | '/wellness'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AchievementsRoute: typeof AchievementsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   AttendanceRoute: typeof AttendanceRoute
   FinanceRoute: typeof FinanceRoute
+  GradebookRoute: typeof GradebookRoute
+  HomeworkRoute: typeof HomeworkRoute
   InsightsRoute: typeof InsightsRoute
+  LessonsRoute: typeof LessonsRoute
   MessagesRoute: typeof MessagesRoute
+  ScheduleRoute: typeof ScheduleRoute
+  SettingsRoute: typeof SettingsRoute
+  SkillsRoute: typeof SkillsRoute
+  StaffRoute: typeof StaffRoute
+  StudentsRoute: typeof StudentsRoute
   TransportRoute: typeof TransportRoute
   WellnessRoute: typeof WellnessRoute
 }
@@ -137,6 +267,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TransportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/students': {
+      id: '/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof StudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/messages': {
       id: '/messages'
       path: '/messages'
@@ -144,11 +309,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MessagesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lessons': {
+      id: '/lessons'
+      path: '/lessons'
+      fullPath: '/lessons'
+      preLoaderRoute: typeof LessonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights': {
       id: '/insights'
       path: '/insights'
       fullPath: '/insights'
       preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/homework': {
+      id: '/homework'
+      path: '/homework'
+      fullPath: '/homework'
+      preLoaderRoute: typeof HomeworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gradebook': {
+      id: '/gradebook'
+      path: '/gradebook'
+      fullPath: '/gradebook'
+      preLoaderRoute: typeof GradebookRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -165,6 +351,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AttendanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/achievements': {
+      id: '/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,10 +377,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AchievementsRoute: AchievementsRoute,
+  AnalyticsRoute: AnalyticsRoute,
   AttendanceRoute: AttendanceRoute,
   FinanceRoute: FinanceRoute,
+  GradebookRoute: GradebookRoute,
+  HomeworkRoute: HomeworkRoute,
   InsightsRoute: InsightsRoute,
+  LessonsRoute: LessonsRoute,
   MessagesRoute: MessagesRoute,
+  ScheduleRoute: ScheduleRoute,
+  SettingsRoute: SettingsRoute,
+  SkillsRoute: SkillsRoute,
+  StaffRoute: StaffRoute,
+  StudentsRoute: StudentsRoute,
   TransportRoute: TransportRoute,
   WellnessRoute: WellnessRoute,
 }
