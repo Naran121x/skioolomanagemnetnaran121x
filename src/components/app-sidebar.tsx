@@ -160,7 +160,7 @@ export function AppSidebar() {
                     <SidebarMenuButton
                       asChild
                       isActive={isActive(item.url)}
-                      className="rounded-2xl h-11 data-[active=true]:bg-gradient-primary data-[active=true]:text-primary-foreground data-[active=true]:shadow-glow transition-all"
+                      className="rounded-2xl h-11 hover:bg-sidebar-accent/70 data-[active=true]:!bg-gradient-primary data-[active=true]:!text-primary-foreground data-[active=true]:shadow-glow data-[active=true]:font-semibold transition-all"
                     >
                       <Link to={item.url} className="flex items-center gap-3">
                         <item.icon className="h-5 w-5 shrink-0" />
