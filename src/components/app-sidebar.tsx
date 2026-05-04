@@ -59,6 +59,7 @@ const NAV_BY_ROLE: Record<Role, NavGroup[]> = {
       items: [
         { title: "Messages", url: "/messages", icon: MessageCircle },
         { title: "Settings", url: "/settings", icon: Settings },
+        { title: "System Settings", url: "/dev/settings", icon: UserCog },
       ],
     },
   ],
