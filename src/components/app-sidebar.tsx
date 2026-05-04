@@ -130,26 +130,26 @@ export function AppSidebar() {
   const groups = NAV_BY_ROLE[role];
 
   return (
-    <Sidebar collapsible="icon" className="border-r-0">
-      <SidebarHeader className="px-4 pt-5 pb-3">
+    <Sidebar collapsible="icon" className="border-r border-sidebar-border bg-sidebar">
+      <SidebarHeader className="px-4 pt-5 pb-4 border-b border-sidebar-border">
         <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-2xl bg-gradient-primary shadow-glow flex items-center justify-center text-primary-foreground font-display font-bold text-lg">
+          <div className="h-9 w-9 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-base shadow-soft">
             S
           </div>
           {!collapsed && (
             <div className="flex flex-col leading-tight">
-              <span className="font-display font-bold text-lg">Skoolio</span>
-              <span className="text-xs text-muted-foreground capitalize">{role} space</span>
+              <span className="font-display font-semibold text-base text-foreground">Skoolio</span>
+              <span className="text-[11px] text-muted-foreground capitalize tracking-wide">{role} workspace</span>
             </div>
           )}
         </Link>
       </SidebarHeader>
 
-      <SidebarContent className="px-2">
+      <SidebarContent className="px-2 py-3">
         {groups.map((group) => (
           <SidebarGroup key={group.label}>
             {!collapsed && (
-              <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+              <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.08em] text-muted-foreground/80 px-2">
                 {group.label}
               </SidebarGroupLabel>
             )}
@@ -160,11 +160,11 @@ export function AppSidebar() {
                     <SidebarMenuButton
                       asChild
                       isActive={isActive(item.url)}
-                      className="rounded-2xl h-11 hover:bg-sidebar-accent/70 data-[active=true]:!bg-gradient-primary data-[active=true]:!text-primary-foreground data-[active=true]:shadow-glow data-[active=true]:font-semibold transition-all"
+                      className="rounded-lg h-9 text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[active=true]:!bg-primary data-[active=true]:!text-primary-foreground data-[active=true]:font-medium data-[active=true]:shadow-soft transition-colors"
                     >
                       <Link to={item.url} className="flex items-center gap-3">
-                        <item.icon className="h-5 w-5 shrink-0" />
-                        {!collapsed && <span className="font-medium">{item.title}</span>}
+                        <item.icon className="h-4 w-4 shrink-0" />
+                        {!collapsed && <span>{item.title}</span>}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -176,22 +176,16 @@ export function AppSidebar() {
       </SidebarContent>
 
       {!collapsed && (
-        <SidebarFooter className="p-3">
-          <div className="rounded-2xl bg-gradient-warm p-4 text-accent-foreground shadow-soft">
-            <div className="text-2xl">
-              {role === "admin" ? "📊" : role === "teacher" ? "✨" : role === "parent" ? "💛" : "🔥"}
+        <SidebarFooter className="p-3 border-t border-sidebar-border">
+          <div className="rounded-lg border border-border bg-card/60 p-3">
+            <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+              {role === "admin" ? "School pulse" : role === "teacher" ? "Today" : role === "parent" ? "Aanya · Grade 8" : "Streak"}
             </div>
-            <div className="mt-1 font-display font-bold">
-              {role === "admin" && "School thriving"}
-              {role === "teacher" && "Less paperwork"}
-              {role === "student" && "7-day streak!"}
-              {role === "parent" && "Aanya is doing great"}
-            </div>
-            <div className="text-xs opacity-80">
-              {role === "admin" && "All KPIs trending up."}
-              {role === "teacher" && "Plans auto-saved."}
-              {role === "student" && "Keep the spark alive."}
-              {role === "parent" && "Today's mood: happy 😊"}
+            <div className="mt-1 font-display font-semibold text-sm text-foreground">
+              {role === "admin" && "All KPIs healthy"}
+              {role === "teacher" && "Plans auto-saved"}
+              {role === "student" && "7-day streak"}
+              {role === "parent" && "Doing great 💛"}
             </div>
           </div>
         </SidebarFooter>
