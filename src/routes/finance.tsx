@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { CreditCard, GraduationCap, Bus, BookOpen, CheckCircle2, Clock } from "lucide-react";
 import { toast } from "sonner";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/finance")({
   head: () => ({
@@ -15,7 +16,11 @@ export const Route = createFileRoute("/finance")({
       { name: "description", content: "Visual breakdown of school fees, transaction history and one-click payment." },
     ],
   }),
-  component: FinancePage,
+  component: () => (
+    <ProtectedRoute allow={["admin", "parent"]}>
+      <FinancePage />
+    </ProtectedRoute>
+  ),
 });
 
 const BREAKDOWN = [
