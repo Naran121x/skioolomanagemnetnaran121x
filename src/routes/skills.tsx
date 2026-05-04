@@ -27,14 +27,14 @@ function SkillsPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {SKILLS.map((s) => (
-          <GlassCard key={s.name} className={s.mastered ? "ring-1 ring-primary/30" : ""}>
+          <GlassCard key={s.name} className={s.mastered ? "border-success/40" : ""}>
             <div className="flex items-center justify-between">
-              <div className="font-display font-semibold text-foreground">{s.name}</div>
-              <span className="text-xs text-muted-foreground">{s.level}%</span>
+              <div className="font-semibold text-foreground">{s.name}</div>
+              <span className="text-xs font-medium text-muted-foreground tabular-nums">{s.level}%</span>
             </div>
-            <Progress value={s.level} className="mt-3 h-2 rounded-full" />
+            <Progress value={s.level} className="mt-3" />
             <div className="mt-2 text-xs text-muted-foreground">
-              {s.mastered ? "Mastered ✦" : "Keep going"}
+              {s.mastered ? "Mastered" : "Keep going"}
             </div>
           </GlassCard>
         ))}

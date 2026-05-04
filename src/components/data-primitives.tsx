@@ -11,7 +11,7 @@ export function GlassCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-card/80 backdrop-blur-md p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)]",
+        "rounded-md border border-border bg-card p-6",
         className,
       )}
     >
@@ -53,7 +53,7 @@ export function DataTable<T extends Record<string, ReactNode>>({
   rows: T[];
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-card/80 backdrop-blur-md">
+    <div className="overflow-hidden rounded-md border border-border bg-card">
       <table className="w-full text-sm">
         <thead className="bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
           <tr>
