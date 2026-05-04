@@ -42,7 +42,6 @@ function UserBadge() {
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Signed in</span>
         <span className="text-sm font-semibold capitalize">{role}</span>
       </div>
-      </div>
-    </header>
+    </div>
   );
 }
