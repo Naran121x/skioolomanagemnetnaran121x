@@ -10,6 +10,12 @@ import {
   Wallet,
   Settings,
   HeartPulse,
+  BookOpen,
+  ClipboardList,
+  BarChart3,
+  UserCog,
+  Bus,
+  type LucideIcon,
 } from "lucide-react";
 import {
   Sidebar,
@@ -24,26 +30,95 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useRole } from "@/context/RoleContext";
+import { useRole, type Role } from "@/context/RoleContext";
 
-const mainItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Insight Stream", url: "/insights", icon: Sparkles },
-  { title: "Skill Tree", url: "/skills", icon: GraduationCap },
-  { title: "Attendance", url: "/attendance", icon: CalendarCheck },
-  { title: "Community", url: "/community", icon: Users },
-];
+type NavItem = { title: string; url: string; icon: LucideIcon };
+type NavGroup = { label: string; items: NavItem[] };
 
-const engageItems = [
-  { title: "Achievements", url: "/achievements", icon: Trophy },
-  { title: "Wellness", url: "/wellness", icon: HeartPulse },
-  { title: "Messages", url: "/messages", icon: MessageCircle },
-];
-
-const opsItems = [
-  { title: "Finance", url: "/finance", icon: Wallet },
-  { title: "Settings", url: "/settings", icon: Settings },
-];
+const NAV_BY_ROLE: Record<Role, NavGroup[]> = {
+  admin: [
+    {
+      label: "Overview",
+      items: [
+        { title: "Dashboard", url: "/", icon: LayoutDashboard },
+        { title: "Analytics", url: "/analytics", icon: BarChart3 },
+        { title: "Insight Stream", url: "/insights", icon: Sparkles },
+      ],
+    },
+    {
+      label: "Operate",
+      items: [
+        { title: "Staff", url: "/staff", icon: UserCog },
+        { title: "Students", url: "/students", icon: Users },
+        { title: "Finance", url: "/finance", icon: Wallet },
+        { title: "Transport", url: "/transport", icon: Bus },
+      ],
+    },
+    {
+      label: "System",
+      items: [
+        { title: "Messages", url: "/messages", icon: MessageCircle },
+        { title: "Settings", url: "/settings", icon: Settings },
+      ],
+    },
+  ],
+  teacher: [
+    {
+      label: "Teach",
+      items: [
+        { title: "Dashboard", url: "/", icon: LayoutDashboard },
+        { title: "Attendance", url: "/attendance", icon: CalendarCheck },
+        { title: "Lesson Planner", url: "/lessons", icon: BookOpen },
+        { title: "Gradebook", url: "/gradebook", icon: ClipboardList },
+      ],
+    },
+    {
+      label: "Care",
+      items: [
+        { title: "Mood Tracker", url: "/wellness", icon: HeartPulse },
+        { title: "Messages", url: "/messages", icon: MessageCircle },
+      ],
+    },
+  ],
+  student: [
+    {
+      label: "Learn",
+      items: [
+        { title: "Dashboard", url: "/", icon: LayoutDashboard },
+        { title: "Skill Tree", url: "/skills", icon: GraduationCap },
+        { title: "Homework", url: "/homework", icon: ClipboardList },
+        { title: "Schedule", url: "/schedule", icon: CalendarCheck },
+      ],
+    },
+    {
+      label: "Play",
+      items: [
+        { title: "Achievements", url: "/achievements", icon: Trophy },
+        { title: "Insight Stream", url: "/insights", icon: Sparkles },
+        { title: "Messages", url: "/messages", icon: MessageCircle },
+      ],
+    },
+  ],
+  parent: [
+    {
+      label: "Your child",
+      items: [
+        { title: "Dashboard", url: "/", icon: LayoutDashboard },
+        { title: "Insight Stream", url: "/insights", icon: Sparkles },
+        { title: "Attendance", url: "/attendance", icon: CalendarCheck },
+        { title: "Wellness", url: "/wellness", icon: HeartPulse },
+      ],
+    },
+    {
+      label: "School",
+      items: [
+        { title: "Fees", url: "/finance", icon: Wallet },
+        { title: "Messages", url: "/messages", icon: MessageCircle },
+        { title: "Transport", url: "/transport", icon: Bus },
+      ],
+    },
+  ],
+};
 
 export function AppSidebar() {
   const { state } = useSidebar();
@@ -52,29 +127,7 @@ export function AppSidebar() {
   const currentPath = useRouterState({ select: (r) => r.location.pathname });
   const isActive = (p: string) => currentPath === p;
 
-  const renderGroup = (label: string, items: typeof mainItems) => (
-    <SidebarGroup>
-      {!collapsed && <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">{label}</SidebarGroupLabel>}
-      <SidebarGroupContent>
-        <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                asChild
-                isActive={isActive(item.url)}
-                className="rounded-2xl h-11 data-[active=true]:bg-gradient-primary data-[active=true]:text-primary-foreground data-[active=true]:shadow-glow transition-all"
-              >
-                <Link to={item.url} className="flex items-center gap-3">
-                  <item.icon className="h-5 w-5 shrink-0" />
-                  {!collapsed && <span className="font-medium">{item.title}</span>}
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
-  );
+  const groups = NAV_BY_ROLE[role];
 
   return (
     <Sidebar collapsible="icon" className="border-r-0">
@@ -93,17 +146,53 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="px-2">
-        {renderGroup("Learn", mainItems)}
-        {renderGroup("Engage", engageItems)}
-        {renderGroup("Operate", opsItems)}
+        {groups.map((group) => (
+          <SidebarGroup key={group.label}>
+            {!collapsed && (
+              <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">
+                {group.label}
+              </SidebarGroupLabel>
+            )}
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {group.items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive(item.url)}
+                      className="rounded-2xl h-11 data-[active=true]:bg-gradient-primary data-[active=true]:text-primary-foreground data-[active=true]:shadow-glow transition-all"
+                    >
+                      <Link to={item.url} className="flex items-center gap-3">
+                        <item.icon className="h-5 w-5 shrink-0" />
+                        {!collapsed && <span className="font-medium">{item.title}</span>}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
 
       {!collapsed && (
         <SidebarFooter className="p-3">
           <div className="rounded-2xl bg-gradient-warm p-4 text-accent-foreground shadow-soft">
-            <div className="text-2xl">🔥</div>
-            <div className="mt-1 font-display font-bold">7-day streak!</div>
-            <div className="text-xs opacity-80">Keep the spark alive.</div>
+            <div className="text-2xl">
+              {role === "admin" ? "📊" : role === "teacher" ? "✨" : role === "parent" ? "💛" : "🔥"}
+            </div>
+            <div className="mt-1 font-display font-bold">
+              {role === "admin" && "School thriving"}
+              {role === "teacher" && "Less paperwork"}
+              {role === "student" && "7-day streak!"}
+              {role === "parent" && "Aanya is doing great"}
+            </div>
+            <div className="text-xs opacity-80">
+              {role === "admin" && "All KPIs trending up."}
+              {role === "teacher" && "Plans auto-saved."}
+              {role === "student" && "Keep the spark alive."}
+              {role === "parent" && "Today's mood: happy 😊"}
+            </div>
           </div>
         </SidebarFooter>
       )}
