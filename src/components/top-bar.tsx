@@ -1,6 +1,6 @@
-import { Bell, Search } from "lucide-react";
+import { Bell, Search, ShieldCheck } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { RoleSwitcher } from "@/components/role-switcher";
+import { useRole } from "@/context/RoleContext";
 
 export function TopBar() {
   return (
@@ -25,8 +25,23 @@ export function TopBar() {
           <Bell className="h-4 w-4" />
           <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-gradient-warm" />
         </button>
-        <RoleSwitcher />
+        <UserBadge />
       </div>
     </header>
+  );
+}
+
+function UserBadge() {
+  const { role } = useRole();
+  return (
+    <div className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-2.5 py-1.5">
+      <div className="h-7 w-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
+        <ShieldCheck className="h-4 w-4" />
+      </div>
+      <div className="hidden sm:flex flex-col leading-tight">
+        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Signed in</span>
+        <span className="text-sm font-semibold capitalize">{role}</span>
+      </div>
+    </div>
   );
 }

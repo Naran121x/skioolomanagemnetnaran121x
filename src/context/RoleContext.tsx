@@ -13,7 +13,7 @@ type Ctx = { role: Role; setRole: (r: Role) => void };
 const RoleContext = createContext<Ctx | null>(null);
 
 export function RoleProvider({ children }: { children: ReactNode }) {
-  const [role, setRole] = useState<Role>("student");
+  const [role, setRole] = useState<Role>("admin");
   return <RoleContext.Provider value={{ role, setRole }}>{children}</RoleContext.Provider>;
 }
 

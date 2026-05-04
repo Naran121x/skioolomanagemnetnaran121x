@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WellnessRouteImport } from './routes/wellness'
+import { Route as UnauthorizedRouteImport } from './routes/unauthorized'
 import { Route as TransportRouteImport } from './routes/transport'
 import { Route as StudentsRouteImport } from './routes/students'
 import { Route as StaffRouteImport } from './routes/staff'
@@ -26,10 +27,16 @@ import { Route as AttendanceRouteImport } from './routes/attendance'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DevSettingsRouteImport } from './routes/dev.settings'
 
 const WellnessRoute = WellnessRouteImport.update({
   id: '/wellness',
   path: '/wellness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnauthorizedRoute = UnauthorizedRouteImport.update({
+  id: '/unauthorized',
+  path: '/unauthorized',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TransportRoute = TransportRouteImport.update({
@@ -112,6 +119,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DevSettingsRoute = DevSettingsRouteImport.update({
+  id: '/dev/settings',
+  path: '/dev/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -130,7 +142,9 @@ export interface FileRoutesByFullPath {
   '/staff': typeof StaffRoute
   '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
+  '/unauthorized': typeof UnauthorizedRoute
   '/wellness': typeof WellnessRoute
+  '/dev/settings': typeof DevSettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -149,7 +163,9 @@ export interface FileRoutesByTo {
   '/staff': typeof StaffRoute
   '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
+  '/unauthorized': typeof UnauthorizedRoute
   '/wellness': typeof WellnessRoute
+  '/dev/settings': typeof DevSettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -169,7 +185,9 @@ export interface FileRoutesById {
   '/staff': typeof StaffRoute
   '/students': typeof StudentsRoute
   '/transport': typeof TransportRoute
+  '/unauthorized': typeof UnauthorizedRoute
   '/wellness': typeof WellnessRoute
+  '/dev/settings': typeof DevSettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -190,7 +208,9 @@ export interface FileRouteTypes {
     | '/staff'
     | '/students'
     | '/transport'
+    | '/unauthorized'
     | '/wellness'
+    | '/dev/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -209,7 +229,9 @@ export interface FileRouteTypes {
     | '/staff'
     | '/students'
     | '/transport'
+    | '/unauthorized'
     | '/wellness'
+    | '/dev/settings'
   id:
     | '__root__'
     | '/'
@@ -228,7 +250,9 @@ export interface FileRouteTypes {
     | '/staff'
     | '/students'
     | '/transport'
+    | '/unauthorized'
     | '/wellness'
+    | '/dev/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -248,7 +272,9 @@ export interface RootRouteChildren {
   StaffRoute: typeof StaffRoute
   StudentsRoute: typeof StudentsRoute
   TransportRoute: typeof TransportRoute
+  UnauthorizedRoute: typeof UnauthorizedRoute
   WellnessRoute: typeof WellnessRoute
+  DevSettingsRoute: typeof DevSettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +284,13 @@ declare module '@tanstack/react-router' {
       path: '/wellness'
       fullPath: '/wellness'
       preLoaderRoute: typeof WellnessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unauthorized': {
+      id: '/unauthorized'
+      path: '/unauthorized'
+      fullPath: '/unauthorized'
+      preLoaderRoute: typeof UnauthorizedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/transport': {
@@ -372,6 +405,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dev/settings': {
+      id: '/dev/settings'
+      path: '/dev/settings'
+      fullPath: '/dev/settings'
+      preLoaderRoute: typeof DevSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -392,7 +432,9 @@ const rootRouteChildren: RootRouteChildren = {
   StaffRoute: StaffRoute,
   StudentsRoute: StudentsRoute,
   TransportRoute: TransportRoute,
+  UnauthorizedRoute: UnauthorizedRoute,
   WellnessRoute: WellnessRoute,
+  DevSettingsRoute: DevSettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
