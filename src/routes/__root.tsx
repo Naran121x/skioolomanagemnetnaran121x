@@ -41,6 +41,10 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Skoolio — Modern School OS" },
+      { name: "twitter:description", content: "A warm, modern school platform for admins, teachers, students and parents." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2ffdf8c2-70e2-4790-9583-6be138a823de/id-preview-4f5a9f91--6fd80a08-630d-4b3c-9ce4-0dca202592b5.lovable.app-1777882983777.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2ffdf8c2-70e2-4790-9583-6be138a823de/id-preview-4f5a9f91--6fd80a08-630d-4b3c-9ce4-0dca202592b5.lovable.app-1777882983777.png" },
     ],
     links: [
       {
