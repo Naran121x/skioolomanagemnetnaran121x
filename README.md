@@ -1,4 +1,4 @@
-# Harmony Hub
+# A School Management System Project.
 
 "ReferencingDESIGN & VIBE INSTRUCTIONS
 
