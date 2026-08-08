@@ -17,7 +17,7 @@ This project was built with [Lovable](https://lovable.dev).
 **Live app**: https://skioolomanagemnetnaran121x.lovable.app
 
 ## Build with Lovable
-
+ 
 Continue developing this project in the [Lovable editor](https://lovable.dev/projects/6fd80a08-630d-4b3c-9ce4-0dca202592b5).
 
 
