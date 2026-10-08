@@ -4,7 +4,16 @@ import { DataTable, StatCard } from "@/components/data-primitives";
 import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/homework")({
-  head: () => ({ meta: [{ title: "Homework — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Homework — Skoolio" },
+      { name: "description", content: "Track assignments, due dates and submission status." },
+      { property: "og:title", content: "Homework — Skoolio" },
+      { property: "og:description", content: "Track assignments, due dates and submission status." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: HomeworkPage,
 });
 

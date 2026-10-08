@@ -9,7 +9,11 @@ export const Route = createFileRoute("/wellness")({
   head: () => ({
     meta: [
       { title: "Wellness — Skoolio" },
-      { name: "description", content: "Anonymous mood pulse and wellness updates for your child." },
+      { name: "description", content: "Review anonymous mood pulses and student wellness updates." },
+      { property: "og:title", content: "Wellness — Skoolio" },
+      { property: "og:description", content: "Review anonymous mood pulses and student wellness updates." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: WellnessPage,

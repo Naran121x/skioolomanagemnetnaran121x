@@ -3,7 +3,16 @@ import { PageShell } from "@/components/page-shell";
 import { DataTable, StatCard } from "@/components/data-primitives";
 
 export const Route = createFileRoute("/gradebook")({
-  head: () => ({ meta: [{ title: "Gradebook — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Gradebook — Skoolio" },
+      { name: "description", content: "Review class quiz results, projects and term grades." },
+      { property: "og:title", content: "Gradebook — Skoolio" },
+      { property: "og:description", content: "Review class quiz results, projects and term grades." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: GradebookPage,
 });
 

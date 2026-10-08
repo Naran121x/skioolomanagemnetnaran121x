@@ -4,7 +4,16 @@ import { Card } from "@/components/ui/card";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/transport")({
-  head: () => ({ meta: [{ title: "Transport — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Transport — Skoolio" },
+      { name: "description", content: "Review the school transport workspace." },
+      { property: "og:title", content: "Transport — Skoolio" },
+      { property: "og:description", content: "Review the school transport workspace." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: () => (
     <ProtectedRoute allow={["admin", "parent"]}>
       <PageShell title="Transport" emoji="🚌" subtitle="Live school bus tracking">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Copy, Check, Loader2 } from "lucide-react";
 import { Panel } from "./shared";
-import { generateReportCard } from "@/server/ai.functions";
+import { generateReportCard } from "@/lib/ai.functions";
 
 export function AIReportCard() {
   const generate = useServerFn(generateReportCard);

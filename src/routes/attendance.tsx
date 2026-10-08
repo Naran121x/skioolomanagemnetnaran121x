@@ -8,7 +8,11 @@ export const Route = createFileRoute("/attendance")({
   head: () => ({
     meta: [
       { title: "Attendance — Skoolio" },
-      { name: "description", content: "Live attendance and history." },
+      { name: "description", content: "View daily attendance history and presence trends." },
+      { property: "og:title", content: "Attendance — Skoolio" },
+      { property: "og:description", content: "View daily attendance history and presence trends." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: AttendancePage,

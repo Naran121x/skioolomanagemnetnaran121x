@@ -6,7 +6,16 @@ import { Button } from "@/components/ui/button";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/students")({
-  head: () => ({ meta: [{ title: "Students — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Students — Skoolio" },
+      { name: "description", content: "Review student records, house assignments and risk indicators." },
+      { property: "og:title", content: "Students — Skoolio" },
+      { property: "og:description", content: "Review student records, house assignments and risk indicators." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: () => (
     <ProtectedRoute allow={["admin", "teacher"]}>
       <StudentsPage />
