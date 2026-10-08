@@ -3,7 +3,16 @@ import { PageShell } from "@/components/page-shell";
 import { GlassCard } from "@/components/data-primitives";
 
 export const Route = createFileRoute("/schedule")({
-  head: () => ({ meta: [{ title: "Schedule — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Schedule — Skoolio" },
+      { name: "description", content: "View subjects and class timings in the weekly timetable." },
+      { property: "og:title", content: "Schedule — Skoolio" },
+      { property: "og:description", content: "View subjects and class timings in the weekly timetable." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: SchedulePage,
 });
 

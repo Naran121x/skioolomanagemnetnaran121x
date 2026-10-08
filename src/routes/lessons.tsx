@@ -5,7 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export const Route = createFileRoute("/lessons")({
-  head: () => ({ meta: [{ title: "Lesson Planner — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Lesson Planner — Skoolio" },
+      { name: "description", content: "Review lesson drafts and scheduled classroom topics." },
+      { property: "og:title", content: "Lesson Planner — Skoolio" },
+      { property: "og:description", content: "Review lesson drafts and scheduled classroom topics." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: LessonsPage,
 });
 

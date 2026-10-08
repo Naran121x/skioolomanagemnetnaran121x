@@ -7,7 +7,16 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/dev/settings")({
-  head: () => ({ meta: [{ title: "Dev Settings — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Dev Settings — Skoolio" },
+      { name: "description", content: "Choose a simulated role for the Skoolio dashboard." },
+      { property: "og:title", content: "Dev Settings — Skoolio" },
+      { property: "og:description", content: "Choose a simulated role for the Skoolio dashboard." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: () => (
     <ProtectedRoute allow={["admin"]}>
       <DevSettingsPage />

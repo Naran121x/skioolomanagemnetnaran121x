@@ -3,7 +3,16 @@ import { PageShell } from "@/components/page-shell";
 import { GlassCard, StatCard } from "@/components/data-primitives";
 
 export const Route = createFileRoute("/achievements")({
-  head: () => ({ meta: [{ title: "Achievements — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Achievements — Skoolio" },
+      { name: "description", content: "Review earned badges, attendance streaks and house points." },
+      { property: "og:title", content: "Achievements — Skoolio" },
+      { property: "og:description", content: "Review earned badges, attendance streaks and house points." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: AchievementsPage,
 });
 

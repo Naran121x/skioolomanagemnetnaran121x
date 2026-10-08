@@ -4,7 +4,16 @@ import { GlassCard } from "@/components/data-primitives";
 import { Switch } from "@/components/ui/switch";
 
 export const Route = createFileRoute("/settings")({
-  head: () => ({ meta: [{ title: "Settings — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Settings — Skoolio" },
+      { name: "description", content: "Manage workspace notification and privacy preferences." },
+      { property: "og:title", content: "Settings — Skoolio" },
+      { property: "og:description", content: "Manage workspace notification and privacy preferences." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: SettingsPage,
 });
 

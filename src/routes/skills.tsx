@@ -4,7 +4,16 @@ import { GlassCard, StatCard } from "@/components/data-primitives";
 import { Progress } from "@/components/ui/progress";
 
 export const Route = createFileRoute("/skills")({
-  head: () => ({ meta: [{ title: "Skill Tree — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Skill Tree — Skoolio" },
+      { name: "description", content: "Track subject mastery and learning progress." },
+      { property: "og:title", content: "Skill Tree — Skoolio" },
+      { property: "og:description", content: "Track subject mastery and learning progress." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: SkillsPage,
 });
 

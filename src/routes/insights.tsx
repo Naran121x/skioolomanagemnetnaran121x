@@ -8,7 +8,11 @@ export const Route = createFileRoute("/insights")({
   head: () => ({
     meta: [
       { title: "Insight Stream — Skoolio" },
-      { name: "description", content: "An AI-powered timeline of academic and behavioral journey." },
+      { name: "description", content: "Follow academic milestones and behavioral growth in the student timeline." },
+      { property: "og:title", content: "Insight Stream — Skoolio" },
+      { property: "og:description", content: "Follow academic milestones and behavioral growth in the student timeline." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: InsightsPage,

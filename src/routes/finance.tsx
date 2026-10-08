@@ -13,7 +13,11 @@ export const Route = createFileRoute("/finance")({
   head: () => ({
     meta: [
       { title: "Fees — Skoolio" },
-      { name: "description", content: "Visual breakdown of school fees, transaction history and one-click payment." },
+      { name: "description", content: "Review school fee breakdowns and transaction history." },
+      { property: "og:title", content: "Fees — Skoolio" },
+      { property: "og:description", content: "Review school fee breakdowns and transaction history." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

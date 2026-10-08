@@ -4,7 +4,16 @@ import { StatCard, ChartPlaceholder, GlassCard } from "@/components/data-primiti
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
 export const Route = createFileRoute("/analytics")({
-  head: () => ({ meta: [{ title: "Analytics — Skoolio" }] }),
+  head: () => ({
+    meta: [
+      { title: "Analytics — Skoolio" },
+      { name: "description", content: "Review school-wide performance, attendance and early warning signals." },
+      { property: "og:title", content: "Analytics — Skoolio" },
+      { property: "og:description", content: "Review school-wide performance, attendance and early warning signals." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: () => (
     <ProtectedRoute allow={["admin"]}>
       <AnalyticsPage />
