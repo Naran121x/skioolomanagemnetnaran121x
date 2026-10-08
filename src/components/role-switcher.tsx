@@ -11,7 +11,8 @@ import { ROLES, useRole } from "@/context/RoleContext";
 
 export function RoleSwitcher() {
   const { role, setRole } = useRole();
-  const current = ROLES.find((r) => r.value === role)!;
+  const current = ROLES.find((r) => r.value === role);
+  if (!current) return null;
 
   return (
     <DropdownMenu>

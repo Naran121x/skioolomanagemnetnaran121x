@@ -1,0 +1,3 @@
+- [ ] Send role changes to the matching dashboard without weakening page restrictions.
+- [ ] Add smooth page and role transitions with reduced-motion support.
+- [ ] Verify role switching, sidebar navigation, and page metadata.
